@@ -33,7 +33,7 @@ use catalog::Catalog;
 pub enum Language {
     #[default]
     En,
-    /// Arabic; needs an installed system font ([`arabic_font_available`]).
+    /// Arabic; `rtl::install` adds a system Arabic face or craft-fonts to every family.
     Ar,
     Ja,
     Es,
@@ -343,12 +343,6 @@ pub fn chinese_font_available() -> bool {
 /// is bundled. False on systems (and the web) without one.
 pub fn korean_font_available() -> bool {
     crate::cjk::korean_available()
-}
-
-/// Whether the interface can show Arabic: an installed system Arabic face is added by
-/// `theme::install` (see `cjk.rs`); none is bundled. False on systems without one.
-pub fn arabic_font_available() -> bool {
-    crate::cjk::arabic_available()
 }
 
 #[cfg(test)]
